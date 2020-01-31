@@ -35,19 +35,7 @@
                         this.vid.pause();
                     }
                 }
-            });  
-
-
-            var m = document.querySelector("a-marker")
-      m.addEventListener("markerFound", (e)=>{
-      console.log("found")
-      var v = document.querySelector('#mivideo').play();
-})
-      m.addEventListener("markerLost", (e)=>{
-      console.log("lost")
-      var v = document.querySelector('#mivideo').pause();
-})
-
+            });           
         </script>
     </head>
     <body>
@@ -79,9 +67,8 @@
 
             <a-marker preset="kanji" video-vidhandler>
              
-               <!-- <a-plane scale = "1 1 1" position='0 0 0' rotation="270 0 0" material='transparent:true;src:#invitation' controls></a-plane> -->
-               <video id="mivideo" crossOrigin="anonymous" playsinline webkitplaysinline autoplay controls src="videos/invitation.mp4"></video>
-               <a-video src="#mivideo" position="0 0 0" rotation="270 0 0" ></a-video>
+                <a-plane scale = "1 1 2" position='0 0 0' rotation="270 0 0" material='transparent:true;src:#invitation' controls></a-plane>
+             
             </a-marker>
 
             
