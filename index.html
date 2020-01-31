@@ -126,10 +126,32 @@
             </a-assets>
             
            
+            <a-marker preset="kanji">
+                <video id="mivideo" crossOrigin="anonymous" playsinline webkitplaysinline autoplay controls muted src="1.mp4"></video>
+                <a-video src="#mivideo" position="0 0 0" rotation="270 0 0" ></a-video>
+               
+               <script> 
+                  var m = document.querySelector("a-marker")
+                  m.addEventListener("markerFound", (e)=>{
+                  console.log("found")
+                  var v = document.querySelector('#mivideo').play();
+            })
+                  m.addEventListener("markerLost", (e)=>{
+                  console.log("lost")
+                  var v = document.querySelector('#mivideo').pause();
+            })
             
+            
+            document.querySelector("button").addEventListener("click", (e)=>{  
+              var v = document.querySelector('#mivideo').muted=false;
+            
+            })
+            
+                 </script>
+                 
             <!-- Invitation Video Marker -->
 
-            <a-marker preset="kanji" video-vidhandler>
+            <a-marker preset="hiro" video-vidhandler>
                 <!--<a-box position='0 0 0' material='color: red;'></a-box>-->
                 <a-plane  position='0 0 0' rotation="270 0 0" material='transparent:true;src:#invitation' controls></a-plane>
                 <!--<a-entity text="font: https://cdn.aframe.io/fonts/mozillavr.fnt; value: Fun Moments"></a-entity>-->
