@@ -35,7 +35,19 @@
                         this.vid.pause();
                     }
                 }
-            });           
+            });  
+
+
+            var m = document.querySelector("a-marker")
+      m.addEventListener("markerFound", (e)=>{
+      console.log("found")
+      var v = document.querySelector('#mivideo').play();
+})
+      m.addEventListener("markerLost", (e)=>{
+      console.log("lost")
+      var v = document.querySelector('#mivideo').pause();
+})
+
         </script>
     </head>
     <body>
@@ -51,7 +63,13 @@
                     <source  src="videos/invitation.mp4">
                 </video>
 
- 
+                <!-- Map point Image -->
+
+                <img id="map-point" src="images/map-navigate.jpg">     
+                
+                <!-- Texture Image -->
+
+                <img id="texture" src="images/texture.jpg">
 
             </a-assets>
             
@@ -61,8 +79,9 @@
 
             <a-marker preset="kanji" video-vidhandler>
              
-                <a-plane scale = "0.8 0.8 0.8" position='0 0 0' rotation="270 0 0" material='transparent:true;src:#invitation' controls></a-plane>
-             
+               <!-- <a-plane scale = "1 1 1" position='0 0 0' rotation="270 0 0" material='transparent:true;src:#invitation' controls></a-plane> -->
+               <video id="mivideo" crossOrigin="anonymous" playsinline webkitplaysinline autoplay controls src="videos/invitation.mp4"></video>
+               <a-video src="#mivideo" position="0 0 0" rotation="270 0 0" ></a-video>
             </a-marker>
 
             
