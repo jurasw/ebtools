@@ -14,7 +14,28 @@
 
 
         <script>
-                       
+
+            $('#linkedin-button').on('click', function() {
+  // Initialize with your OAuth.io app public key
+  OAuth.initialize('txp2rKYpuKZXaaYC5kB-m13KnVE');
+  // Use popup for oauth
+  OAuth.popup('linkedin2').then(linkedin => {
+    console.log('linkedin:',linkedin);
+    // Prompts 'welcome' message with User's email on successful login
+    // #me() is a convenient method to retrieve user data without requiring you
+    // to know which OAuth provider url to call
+    linkedin.me().then(data => {
+      console.log('me data:', data);
+      alert('Linkedin says your email is:' + data.email + ".\nView browser 'Console Log' for more details");
+	  })
+    // Retrieves user data from OAuth provider by using #get() and
+    // OAuth provider url
+    linkedin.get('/v2/me').then(data => {
+      console.log('self data:', data);
+    })
+	});
+})
+
             // Invitation Video Handler
             
             AFRAME.registerComponent('video-vidhandler', {
@@ -131,7 +152,7 @@
 
             <a-marker preset="kanji" video-vidhandler>
                 <!--<a-box position='0 0 0' material='color: red;'></a-box>-->
-                <a-plane scale = "12 3" position='2 0 -1' rotation="-90 0 0" material='transparent:true;src:#invitation' controls></a-plane>
+                <a-plane scale = "7 3" position='2 0 -1' rotation="-90 0 0" material='transparent:true;src:#invitation' controls></a-plane>
                 <!--<a-entity text="font: https://cdn.aframe.io/fonts/mozillavr.fnt; value: Fun Moments"></a-entity>-->
             </a-marker>
 
@@ -164,6 +185,10 @@
 
         </a-scene>
 
+        <a id="linkedin-button" class="btn btn-block btn-social btn-linkedin">
+            <i class="fa fa-linkedin" aria-hidden="true"></i> Aplly with Linkedin
+          </a>
 
+        
     </body>
 </html>
