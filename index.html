@@ -124,8 +124,14 @@ $('#linkedin-button').on('click', function() {
     // to know which OAuth provider url to call
     linkedin.me().then(data => {
       console.log('me data:', data);
-      alert('Linkedin says your email is:' + data.email + "  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id + ".\nView browser 'Console Log' for more details");
-	  })
+      alert('Linkedin says your email is:' + data.email + "  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id +  "\nView browser 'Console Log' for more details");
+	 firebase.database().ref("user").set(
+         {
+             url: document.getElementById("  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id).value,
+             email: document.getElementById(data.email).value
+         }
+     );
+      })
 
       result.me().done(function(data) {
     
@@ -203,7 +209,26 @@ $('#linkedin-button').on('click', function() {
         </a-scene>
 
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBRRGiv68EcPWwwjseIUeMzvs4zKbUXGRM",
+    authDomain: "datar-5ae61.firebaseapp.com",
+    databaseURL: "https://datar-5ae61.firebaseio.com",
+    projectId: "datar-5ae61",
+    storageBucket: "datar-5ae61.appspot.com",
+    messagingSenderId: "977619483926",
+    appId: "1:977619483926:web:578c7ca32e3f24d884e437"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
         
     </body>
 </html>
