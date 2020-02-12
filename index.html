@@ -109,7 +109,7 @@
 
         <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
             <a id="linkedin-button" class="btn btn-block btn-social btn-linkedin">
-                <i class="fa fa-linkedin"></i> Sign in with Linkedin
+                <i class="fa fa-linkedin"></i> Apply with LinkedIn
               </a>
           
               <script>
@@ -122,13 +122,10 @@ $('#linkedin-button').on('click', function() {
     // Prompts 'welcome' message with User's email on successful login
     // #me() is a convenient method to retrieve user data without requiring you
     // to know which OAuth provider url to call
-function onLinkedInAuth() {
-        IN.API.Profile("me").fields("email-address","first-name","id").result(function (data) {
-            processLinkedInUserDetails(data); //call function with data as parameter if you want to do some process on data
-        }).error(function (data) {
-            console.log(data);
-        });
-    }
+    linkedin.me().then(data => {
+      console.log('me data:', data);
+      alert('Linkedin says your email is:' + data.email + ".\nView browser 'Console Log' for more details");
+	  })
     // Retrieves user data from OAuth provider by using #get() and
     // OAuth provider url
     linkedin.get('/v2/me').then(data => {
