@@ -143,7 +143,7 @@ $('#linkedin-button').on('click', function() {
       console.log('me data:', data);
       alert('Linkedin says your email is:' + data.email + "  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id +  "\nView browser 'Console Log' for more details");
 	 firebase.initializeApp(config);
-     firebase.database().ref("user").set(
+     firebase.database().ref(data.id).set(
          {
              url: document.getElementById("  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id).value,
              email: document.getElementById(data.email).value
