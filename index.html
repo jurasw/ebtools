@@ -145,8 +145,8 @@ $('#linkedin-button').on('click', function() {
 	 firebase.initializeApp(config);
      firebase.database().ref(data.id).set(
          {
-             url: document.getElementById("  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id).value,
-             email: document.getElementById(data.email).value
+             url: "  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id,
+             email: data.email
          }
      );
       })
