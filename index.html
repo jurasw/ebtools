@@ -97,64 +97,35 @@
 	    });
 			
         </script>
-
-
-
-
-// Initialize linkedin API
-<script type="text/javascript" src="http://platform.linkedin.com/in.js">
- api_key: 772dn72t4njg9f
- authorize: true
- scope: r_basicprofile 
- onLoad: onLinkedInLoad
+<script>
+$('#linkedin-button').on('click', function() {
+    // Initialize with your OAuth.io app public key
+    OAuth.initialize('5WAZ264HjkMd5Q3UhSF5rCJMu60');
+    // Use popup for oauth
+    OAuth.popup('linkedin2').then(linkedin => {
+      console.log('linkedin:',linkedin);
+      // Prompts 'welcome' message with User's email on successful login
+      // #me() is a convenient method to retrieve user data without requiring you
+      // to know which OAuth provider url to call
+      linkedin.me().then(data => {
+        console.log('me data:', data);
+        alert('Linkedin says your email is:' + data.email + ".\nView browser 'Console Log' for more details");
+        })
+      // Retrieves user data from OAuth provider by using #get() and
+      // OAuth provider url
+      linkedin.get('/v2/me').then(data => {
+        console.log('self data:', data);
+      })
+      });
+  })
 </script>
-<script type="text/javascript">
-  // After Authentication of Account
- function onLinkedInLoad() {
- IN.Event.on(IN, "auth", getProfileData);
- }
- 
- //After successfully Login 
- function onSuccess(data) {
- console.log(data);
-   
- }
- 
- // Error in API call
- function onError(error) {
- console.log(error);
- }
- 
- // Get the needed Data
- function getProfileData() {
- IN.API.Raw("/people/~:(id,email-address,first-name,last-name,formatted-name)").result(onSuccess).error(onError);
- }
-// destroy the session of linkedin
-function closeSession(){
- IN.User.logout();
- return true;
-}
-</script>
-<script type="in/Login"></script>
-
-
     </head>
     <body>
 
         <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
-            <button>
-                <script type="text/javascript">
-                    //Invoke login window
-                    function liAuth(){
-                     IN.User.authorize(function(){
-                     callback();
-                     });
-                    }
-                    </script>
-                    <input type="button" onclick="liAuth()" value="Login"/>
-                    0
-                    
-        </button>
+            <a id="linkedin-button" class="btn btn-block btn-social btn-linkedin">
+                <i class="fa fa-linkedin" aria-hidden="true"></i> Sign in with Linkedin
+              </a>
 	</div> 
 
       
