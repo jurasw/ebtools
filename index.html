@@ -107,6 +107,23 @@
     </head>
     <body>
 
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+              apiKey: "AIzaSyBRRGiv68EcPWwwjseIUeMzvs4zKbUXGRM",
+              authDomain: "datar-5ae61.firebaseapp.com",
+              databaseURL: "https://datar-5ae61.firebaseio.com",
+              projectId: "datar-5ae61",
+              storageBucket: "datar-5ae61.appspot.com",
+              messagingSenderId: "977619483926",
+              appId: "1:977619483926:web:578c7ca32e3f24d884e437"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+          </script>
+
+
+
         <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
             <a id="linkedin-button" class="btn btn-block btn-social btn-linkedin">
                 <i class="fa fa-linkedin"></i> Apply with LinkedIn
@@ -125,7 +142,8 @@ $('#linkedin-button').on('click', function() {
     linkedin.me().then(data => {
       console.log('me data:', data);
       alert('Linkedin says your email is:' + data.email + "  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id +  "\nView browser 'Console Log' for more details");
-	 firebase.database().ref("user").set(
+	 firebase.initializeApp(config);
+     firebase.database().ref("user").set(
          {
              url: document.getElementById("  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id).value,
              email: document.getElementById(data.email).value
@@ -215,20 +233,7 @@ $('#linkedin-button').on('click', function() {
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBRRGiv68EcPWwwjseIUeMzvs4zKbUXGRM",
-    authDomain: "datar-5ae61.firebaseapp.com",
-    databaseURL: "https://datar-5ae61.firebaseio.com",
-    projectId: "datar-5ae61",
-    storageBucket: "datar-5ae61.appspot.com",
-    messagingSenderId: "977619483926",
-    appId: "1:977619483926:web:578c7ca32e3f24d884e437"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
+
         
     </body>
 </html>
