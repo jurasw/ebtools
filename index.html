@@ -124,8 +124,13 @@ $('#linkedin-button').on('click', function() {
     // to know which OAuth provider url to call
     linkedin.me().then(data => {
       console.log('me data:', data);
-      alert('Linkedin says your email is:' + data.email + ".\nView browser 'Console Log' for more details");
+      alert('Linkedin says your email is:' + data.email + data.name+ ".\nView browser 'Console Log' for more details");
 	  })
+
+      result.me().done(function(data) {
+    
+})
+
     // Retrieves user data from OAuth provider by using #get() and
     // OAuth provider url
     linkedin.get('/v2/me').then(data => {
