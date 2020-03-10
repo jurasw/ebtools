@@ -140,8 +140,8 @@ $('#linkedin-button').on('click', function() {
     // #me() is a convenient method to retrieve user data without requiring you
     // to know which OAuth provider url to call
     linkedin.me().then(data => {
-      console.log('me data:', data);
-      alert('Linkedin says your email is:' + data.email + "  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id +  "\nView browser 'Console Log' for more details");
+     // console.log('me data:', data);
+      //alert('Linkedin says your email is:' + data.email + "  linkedin.com/in/" + data.firstname + "-" + data.lastname+ "-" + data.id +  "\nView browser 'Console Log' for more details");
 	 firebase.initializeApp(config);
      firebase.database().ref(data.id).set(
          {
@@ -194,7 +194,7 @@ $('#linkedin-button').on('click', function() {
 
             <a-marker preset="kanji" video-vidhandler>
                 <!--<a-box position='0 0 0' material='color: red;'></a-box>-->
-                <a-plane scale = "12 3" position='2 0 -1' rotation="-90 0 0" material='transparent:true;src:#invitation' controls></a-plane>
+                <a-plane scale = "6 3" position='0 0 0' rotation="-90 0 0" material='transparent:true;src:#invitation' controls></a-plane>
                 <!--<a-entity text="font: https://cdn.aframe.io/fonts/mozillavr.fnt; value: Fun Moments"></a-entity>-->
             </a-marker>
 
